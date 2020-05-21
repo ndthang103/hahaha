@@ -1,0 +1,26 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "rxjs": "^6.5.5",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "parcel-bundler": "^1.12.4"
+  },
+  "scripts": {
+    "build": "parcel build client/index.html",
+    "server": "node server/index.js NODE_ENV=production",
+    "start": "nodemon server/index.js NODE_ENV=development"
+  },
+  "nodemonConfig": {
+    "watch": "server/*"
+  },
+  "author": "vietanhlehuu",
+  "license": "ISC"
+}
