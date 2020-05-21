@@ -13,32 +13,31 @@ import sendMessage$ from "./actions";
 
 const username$ = of(getUsername());
 
-// Send username to server
 emitOnConnect(username$).subscribe(({ socket, data }) => {
   const username = data;
   socket.emit("save username", username);
 });
 
 listenOnConnect("new user").subscribe(({ id, username }) => {
-  addUser(id, username); // <-- We'll create this soon
+  addUser(id, username);
 });
 
 listenOnConnect("all users").subscribe((users) => {
-  clearUsers(); // <-- We'll create this soon
+  clearUsers();
   addUser("everyone", "Everyone");
   users.forEach(({ id, username }) => addUser(id, username));
 });
 
 listenOnConnect("remove user").subscribe((id) => {
-  removeUser(id); // <-- We'll create this soon
+  removeUser(id);
 });
 
 emitOnConnect(sendMessage$)
   .pipe(withLatestFrom(username$))
   .subscribe(([{ socket, data }, username]) => {
     const [message, id] = data;
-    clearUserInput(); // <-- We'll create this soon
-    addMessage(username, message); // <-- We'll create this soon
+    clearUserInput();
+    addMessage(username, message);
     socket.emit("chat message", { id, message });
   });
 

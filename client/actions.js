@@ -1,17 +1,14 @@
 import { fromEvent, merge } from "rxjs";
 import { map, filter, startWith, withLatestFrom } from "rxjs/operators";
 
-// DOM elements
 const sendButton = document.querySelector(".send");
 const inputBox = document.querySelector(".input");
 const userSelect = document.querySelector(".users");
 
-// Clicks on 'Send' button
 const sendButtonClick$ = fromEvent(sendButton, "click");
 
-// Enter key presses in message input field
 const enterKeyPress$ = fromEvent(inputBox, "keypress").pipe(
-  filter((e) => e.keyCode === 13) // "Enter" key
+  filter((e) => e.keyCode === 13)
 );
 
 const userSelectChange$ = fromEvent(userSelect, "change").pipe(
@@ -19,7 +16,6 @@ const userSelectChange$ = fromEvent(userSelect, "change").pipe(
   startWith("everyone")
 );
 
-// Message send stream
 const sendMessage$ = merge(sendButtonClick$, enterKeyPress$).pipe(
   map(() => inputBox.value),
   filter((message) => message),

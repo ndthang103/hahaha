@@ -2,10 +2,8 @@ import { of, fromEvent } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
 import io from "socket.io-client";
 
-// Initialise Socket.IO and wrap in observable
 const socket$ = of(io());
 
-// Stream of connections
 const connect$ = socket$.pipe(
   switchMap((socket) => fromEvent(socket, "connect").pipe(map(() => socket)))
 );
