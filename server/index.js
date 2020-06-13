@@ -1,7 +1,9 @@
 const server = require("./server");
 const { connection$, disconnect$, listenOnConnect } = require("./connection");
 
-server.listen(3000, () => console.log("listening on port: 3000"));
+server.listen(process.env.PORT || 3000, () =>
+  console.log("listening on port: 3000")
+);
 
 connection$.subscribe(({ io, client }) => {
   const allSockets = io.sockets.sockets;

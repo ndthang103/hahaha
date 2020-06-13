@@ -15,8 +15,8 @@
   },
   "scripts": {
     "build": "parcel build client/index.html",
-    "server": "node server/index.js NODE_ENV=production",
-    "start": "nodemon server/index.js NODE_ENV=development"
+    "server": "node server/index.js",
+    "start": "nodemon server/index.js"
   },
   "nodemonConfig": {
     "watch": "server/*"
