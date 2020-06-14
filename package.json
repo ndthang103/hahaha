@@ -16,7 +16,8 @@
   "scripts": {
     "build": "parcel build client/index.html",
     "server": "node server/index.js",
-    "start": "nodemon server/index.js"
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js NODE_ENV=development"
   },
   "nodemonConfig": {
     "watch": "server/*"
