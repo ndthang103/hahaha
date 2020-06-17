@@ -23,5 +23,8 @@
     "watch": "server/*"
   },
   "author": "vietanhlehuu",
-  "license": "ISC"
+  "license": "ISC" ,
+  "engines": {
+    "node": "12.x"
+    }
 }
